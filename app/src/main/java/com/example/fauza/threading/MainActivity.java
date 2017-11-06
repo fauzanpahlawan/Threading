@@ -1,5 +1,6 @@
 package com.example.fauza.threading;
 
+import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -52,12 +53,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-
-        if (t == null || !t.isAlive()) {
-            t = new Thread(bgRunnable);
-            t.start();
-        } else {
-            t.interrupt();
-        }
+//        if (t == null || !t.isAlive()) {
+//            t = new Thread(bgRunnable);
+//            t.start();
+//        } else {
+//            t.interrupt();
+//        }
     }
 }
