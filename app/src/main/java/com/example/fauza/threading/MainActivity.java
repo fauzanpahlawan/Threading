@@ -26,15 +26,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public void run() {
             try {
-//                Thread.sleep(10 * 10000);
                 while (true) {
                     number = (int) (Math.random() * 10);
                     Thread.sleep(100);
                     handler.post(uiRunnable);
                 }
-            } catch (Exception e) {
-
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
+
         }
     };
 
@@ -50,9 +50,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     Thread t;
+    RandomTask randomTask;
 
     @Override
     public void onClick(View view) {
+        if (randomTask == null || randomTask.getStatus() == AsyncTask.Status.FINISHED) {
+            randomTask = new RandomTask(this.textViewHello);
+            randomTask.execute();
+        } else {
+            randomTask.cancel(true);
+        }
+
 //        if (t == null || !t.isAlive()) {
 //            t = new Thread(bgRunnable);
 //            t.start();
