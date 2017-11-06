@@ -29,6 +29,6 @@ public class RandomTask extends AsyncTask<Void, Integer, Void> {
     protected void onProgressUpdate(Integer... values) {
         super.onProgressUpdate(values);
         int number = values[0];
-        this.textViewHello.setText(number);
+        this.textViewHello.setText(number+"");
     }
 }
